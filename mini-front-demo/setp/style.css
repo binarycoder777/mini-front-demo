@@ -1,0 +1,193 @@
+:root {
+    --line-border-fill: #3498db;
+    --line-border-empty: #383838;
+  
+  }
+
+
+  /* 这段 CSS 代码指定了全局的 box-sizing 属性为 border-box。这意味着在页面中的所有元素，包括 <div>、<p> 和其他 HTML 元素，都会采用 border-box 盒模型。
+
+使用 border-box 盒模型时，元素的宽度和高度包括内容、内边距和边框，而不包括外边距。这样做的好处是更容易控制元素的尺寸，特别是在处理布局时更加方便。
+
+这一行通用的 CSS 代码可以确保整个页面中的元素都遵循相同的盒模型规则，从而提高了页面布局的一致性和可预测性。 */
+
+  * {
+    box-sizing: border-box;
+  }
+
+
+  /* background-color: #1f1f1f;：将页面的背景颜色设定为深灰色。
+font-family: 'Muli', sans-serif;：指定页面中文本的字体，首选 Muli 字体，如果无法加载则使用 sans-serif 作为后备字体。
+display: flex;：使用 Flexbox 布局模型，使得 body 的子元素可以灵活地布局。
+align-items: center;：在交叉轴上居中对齐 body 的子元素。
+justify-content: center;：在主轴上居中对齐 body 的子元素。
+height: 100vh;：将 body 的高度设置为视口高度的 100%，确保整个页面都被填满。
+overflow: hidden;：隐藏 body 内容溢出部分的滚动条。
+margin: 0;：移除 body 的默认外边距，确保页面内容紧贴窗口。 */
+  body {
+    background-color: #1f1f1f;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  /* 这段 CSS 代码定义了一个名为 ".progress-container" 的类，该类具有以下样式设置：
+
+display: flex;：使用 Flexbox 布局模型，使得 ".progress-container" 内部的元素可以灵活地布局。
+justify-content: space-between;：在 ".progress-container" 内部的元素之间均匀分布空间，左右两端贴近容器边界。
+position: relative;：将 ".progress-container" 设置为相对定位，这意味着内部绝对定位的元素将以此容器作为参考对象。
+margin-bottom: 30px;：在 ".progress-container" 下方留出 30 像素的外边距。
+max-width: 100%;：设置最大宽度为父元素的100%，以确保容器可以根据父元素的大小进行调整。
+width: 350px;：设置容器的宽度为 350 像素。
+这些样式的组合可用于创建一个带有灵活布局的进度条容器，该容器内部的元素会根据上述规则进行排列和定位。 */
+  .progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+  }
+
+  /* 这段CSS代码定义了一个.progress-container类的伪元素 ::before 的样式：
+
+content: '';：设置伪元素的内容为空。
+background-color: var(--line-border-empty);：使用CSS变量--line-border-empty来指定伪元素的背景颜色。
+position: absolute;：将伪元素进行绝对定位，相对于.progress-container进行定位。
+top: 50%;：将伪元素的顶部位置设置为其父元素高度的50%。
+left: 0;：将伪元素的左侧位置设置为其父元素的左边缘。
+transform: translateY(-50%);：通过transform属性将伪元素在垂直方向上向上平移50%，以实现垂直居中。
+height: 4px;：设置伪元素的高度为4像素。
+width: 100%;：将伪元素的宽度设置为其父元素的100%。
+z-index: -1;：将伪元素的堆叠顺序设为-1，使其位于普通文档流的下方。
+这些样式的组合用于创建一个位于.progress-container之前的伪元素，通常用于表示进度条的底部线条或边界。 */
+  .progress-container::before {
+    content: '';
+    background-color: var(--line-border-empty);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    z-index: -1;
+    }
+
+    /* 这段 CSS 代码定义了一个名为 ".progress" 的类，该类具有以下样式设置：
+
+    background-color: var(--line-border-fill);：使用 CSS 变量 --line-border-fill 来指定进度条的背景颜色。
+    position: absolute;：将进度条设置为绝对定位，相对于其最近的已定位父元素进行定位。
+    top: 50%;：将进度条的顶部位置设置为其父元素高度的50%。
+    left: 0;：将进度条的左侧位置设置为其父元素的左边缘。
+    transform: translateY(-50%);：通过 transform 属性将进度条在垂直方向上向上平移50%，以实现垂直居中。
+    height: 4px;：设置进度条的高度为 4 像素。
+    width: 0%;：初始时将进度条的宽度设置为 0，表示初始状态下没有进度。
+    z-index: -1;：将进度条的堆叠顺序设为 -1，使其位于普通文档流的下方。
+    transition: 0.4s ease;：添加过渡效果，当进度条的宽度发生变化时，将以 0.4 秒的时间以平滑的方式进行过渡。
+    这些样式的组合用于创建一个表示进度的条形元素，它会根据外部条件的变化而动态调整宽度，同时提供了过渡效果以增强用户体验。 */
+    .progress {
+        background-color: var(--line-border-fill);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        height: 4px;
+        width: 0%;
+        z-index: -1;
+        transition: 0.4s ease;
+      }
+
+
+      /* 这段 CSS 代码定义了一个名为 ".circle" 的类，该类具有以下样式设置：
+
+background-color: #1f1f1f;：将圆形元素的背景颜色设定为深灰色。
+color: #e2e2e2;：指定圆形元素内文本的颜色为浅灰色。
+border-radius: 50%;：将圆形元素的边框半径设置为宽度和高度的50%，从而创建一个圆形。
+height: 30px; 和 width: 30px;：将圆形元素的高度和宽度都设置为30像素，使其成为一个正圆。
+display: flex;：使用 Flexbox 布局模型，使得圆形元素的内容可以在水平和垂直方向上居中对齐。
+align-items: center; 和 justify-content: center;：分别在交叉轴和主轴上将圆形元素的内容居中对齐。
+border: 3px solid var(--line-border-empty);：设��圆形元素的边框为3像素宽，颜色使用 CSS 变量 --line-border-empty 指定。
+transition: 0.4s ease;：添加过渡效果，以便在状态变化时以平滑的方式进行过渡。
+这些样式的组合用于创建一个带有过渡效果的圆形元素，通常用于表示按钮、图标或其他小型交互式元素。 */
+
+      .circle {
+        background-color: #1f1f1f;
+        color:#e2e2e2;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid var(--line-border-empty);
+        transition: 0.4s ease;
+      }
+
+      .circle.active {
+        border-color: var(--line-border-fill);
+      }
+
+
+      /* 这段 CSS 代码定义了一个名为 ".btn" 的类，该类具有以下样式设置：
+
+background-color: var(--line-border-fill);：使用 CSS 变量 --line-border-fill 来指定按钮的背景颜色。
+color: #fff;：将按钮文本颜色设置为白色。
+border: 0;：移除按钮的边框。
+border-radius: 6px;：设置按钮的圆角半径为 6 像素，使其拥有圆润的外观。
+cursor: pointer;：将鼠标悬停在按钮上时的光标形状设置为手型，以表明按钮可点击。
+font-family: inherit;：使按钮继承父元素的字体设置。
+padding: 8px 30px;：设置按钮的内边距，分别为垂直方向 8 像素，水平方向 30 像素。
+margin: 5px;：设置按钮的外边距为 5 像素，用于控制按钮与其他元素之间的间距。
+font-size: 14px;：设置按钮文本的字号为 14 像素。
+这些样式的组合用于创建一个具有统一风格和交互性的按钮，其外观和行为都符合通用的用户界面设计原则。 */
+
+      .btn {
+        background-color: var(--line-border-fill);
+        color: #fff;
+        border: 0;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: inherit;
+        padding: 8px 30px;
+        margin: 5px;
+        font-size: 14px;
+      }
+  
+      /* 这段 CSS 代码定义了一个名为 ".btn" 的类在激活状态下的样式：
+
+:active 伪类表示用户已经通过鼠标按下按钮但尚未释放时的状态。
+transform: scale(0.98);：在按钮处于激活状态时，将按钮进行缩放，使其整体尺寸减小到原来的 98%。
+这个样式规则用于创建一个视觉上的反馈效果，以增强用户交互体验。当用户点击按钮时，按钮会略微缩小，传达出按钮已被按下的视觉提示。 */
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+      
+      /* 这段 CSS 代码定义了一个名为 ".btn" 的类在获取焦点时的样式：
+
+      :focus 伪类表示用户已经将焦点放在按钮上时的状态。
+      outline: 0;：在按钮获取焦点时，移除默认的轮廓线。
+      这个样式规则通常用于定制化按钮在获取焦点时的外观，通过移除默认的轮廓线来改善视觉效果。 */
+      .btn:focus {
+        outline: 0;
+      }
+
+      /* 这段 CSS 代码定义了一个名为 ".btn" 的类在被禁用状态下的样式：
+
+:disabled 伪类表示元素处于禁用状态时的样式。
+background-color: var(--line-border-empty);：将按钮的背景颜色设置为 CSS 变量 --line-border-empty 指定的颜色，以反映按钮不可用的状态。
+cursor: not-allowed;：将鼠标光标形状设置为“not-allowed”，表示该按钮当前不可用。
+这个样式规则用于清晰地显示出按钮处于禁用状态，同时通过改变鼠标光标形状来提示用户无法与该按钮进行交互。 */
+.btn:disabled {
+    background-color: var(--line-border-empty);
+    cursor: not-allowed;
+  }
+  
