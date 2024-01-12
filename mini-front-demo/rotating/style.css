@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+    box-sizing: border-box;
+  }
+
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background-color: #333;
+    color: #222;
+    overflow-x: hidden;
+    margin: 0;
+  }  
+
+  /* background-color: #fafafa;：将容器的背景颜色设置为浅灰色。
+  transform-origin: top left;：指定变换的原点为容器的左上角。
+  transition: transform 0.5s linear;：定义了一个在 0.5 秒内以线性方式进行变换的过渡效果。
+  width: 100vw;：将容器的宽度设置为视口宽度的 100%。
+  min-height: 100vh;：确保容器的最小高度为视口高度的 100%，以使容器至少覆盖整个视口高度。
+  padding: 50px;：在容器的四个边缘添加了 50 像素的内边距。 */
+
+  .container {
+    background-color: #fafafa;
+    transform-origin: top left;
+    transition: transform 0.5s linear;
+    width: 100vw;
+    min-height: 100vh;
+    padding: 50px;
+  }
+
+  /* transform: rotate(-20deg);：当 ".container" 元素同时拥有 "show-nav" 类时，对该元素进行旋转变换，使其逆时针旋转 20 度。 */
+
+  .container.show-nav {
+    transform: rotate(-20deg);
+  }
+
+  .circle-container {
+    position: fixed;
+    top: -100px;
+    left: -100px;
+  }
+
+  .circle {
+    background-color: #ff7979;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.5s linear;
+  }
+
+  .container.show-nav .circle {
+    transform: rotate(-70deg);
+  }
+  
+
+  /* cursor: pointer;：将鼠标光标形状设置为手型，以指示按钮可点击。
+position: absolute;：将按钮的定位方式设置为绝对定位，使其相对于其最近的非静态定位祖先元素进行定位。
+top: 50%;：将按钮相对于其包含块（这里是其父元素）顶部偏移 50% 的距离，使其垂直居中。
+left: 50%;：将按钮相对于其包含块左侧偏移 50% 的距离，使其水平居中。
+height: 100px;：设置按钮的高度为 100 像素。
+background: transparent;：将按钮的背景颜色设置为透明。
+border: 0;：移除按钮的边框。
+font-size: 26px;：设置按钮文本的字号为 26 像素。
+color: #fff;：将按钮文本颜色设置为白色。 */
+
+  .circle button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;
+    background: transparent;
+    border: 0;
+    font-size: 26px;
+    color: #fff;
+  }
+
+  /* .circle button:focus：定义了按钮在获取焦点时的样式。在此处，outline: none; 移除了按钮获取焦点时默认的轮廓线。
+
+.circle button#open：针对具有 ID 为 "open" 的按钮进行样式设置，将其左侧偏移设为 60%。
+
+.circle button#close：针对具有 ID 为 "close" 的按钮进行样式设置，将其顶部偏移设为 60%，并且旋转了 90 度，同时指定了变换的原点为左上角。 */
+  .circle button:focus {
+    outline: none;
+  }
+
+  .circle button#open {
+    left: 60%;
+  }
+
+  .circle button#close {
+    top: 60%;
+    transform: rotate(90deg);
+    transform-origin: top left;
+  }
+
+
+  .container.show-nav + nav li {
+    transform: translateX(0);
+    transition-delay: 0.3s;
+  }
+  
+  /* 对于导航栏（nav）：
+
+  position: fixed;：将导航栏固定在浏览器窗口中。
+  bottom: 40px;：将导航栏与浏览器窗口底部保持 40 像素的距离。
+  left: 0;：将导航栏置于距离浏览器窗口左侧的位置。
+  z-index: 100;：指定导航栏的堆叠顺序为 100，使其位于其他内容之上。
+  对于导航栏中的无序列表（ul）：
+  
+  list-style-type: none;：移除列表项的默认标记样式。
+  padding-left: 30px;：在列表项的左侧添加 30 像素的内边距。
+  对于导航栏中的列表项（li）：
+  
+  text-transform: uppercase;：将文本转换为大写字母显示。
+  color: #fff;：将文本颜色设置为白色。
+  margin: 40px 0;：在垂直方向上给每个列表项添加 40 像素的外边距。
+  transform: translateX(-100%);：沿着 X 轴向左平移列表项，使其隐藏在导航栏左侧。
+  transition: transform 0.4s ease-in;：定义了列表项变换的过渡效果，使用了 0.4 秒的持续时间和 ease-in 的时间函数。
+  对于导航栏中的列表项中的图标（i）：
+  
+  font-size: 20px;：设置图标的字体大小为 20 像素。
+  margin-right: 10px;：在图标右侧添加 10 像素的外边距。 */
+
+  nav {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    z-index: 100;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding-left: 30px;
+  }
+  
+  nav ul li {
+    text-transform: uppercase;
+    color: #fff;
+    margin: 40px 0;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in;
+  }
+  
+  nav ul li i {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  
+  nav ul li + li {
+    margin-left: 15px;
+    transform: translateX(-150%);
+  }
+  
+  nav ul li + li + li {
+    margin-left: 30px;
+    transform: translateX(-200%);
+  }
+
+  /* 对于导航栏内部的链接（a）：
+
+  color: #fafafa;：将链接文本颜色设置为浅灰色。
+  text-decoration: none;：移除链接的下划线装饰。
+  transition: all 0.5s;：定义了链接的所有属性在 0.5 秒内进行过渡效果。
+  对于导航栏内部链接在鼠标悬停时的样式变化：
+  
+  color: #FF7979;：将链接文本颜色设置为粉红色。
+  font-weight: bold;：将链接文本的字体加粗。 */
+  nav a{
+    color: #fafafa;
+    text-decoration: none;
+    transition: all 0.5s;
+  }
+  
+  nav a:hover {
+    color: #FF7979;
+    font-weight: bold;
+  }
+
+  .content img {
+    max-width: 100%;
+  }
+  
+  .content {
+    max-width: 1000px;
+    margin: 50px auto;
+  }
+  
+  .content h1 {
+    margin: 0;
+  }
+  
+  .content small {
+    color: #555;
+    font-style: italic;
+  }
+  
+  .content p {
+    color: #333;
+    line-height: 1.5;
+  }
